@@ -1,0 +1,20 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="/images/logo.png" alt="" width="120" class="d-inline-block align-text-top">
+    </a>
+  </div>
+</nav>
+
+<nav class="nav shadow-sm">
+  <a class="nav-link active" aria-current="page" href="/">Home</a>
+
+  <% if(loggedIn){ %>
+    <a class="nav-link" href="/profile">Profile</a>
+    <a class="nav-link" href="/auth/logout">Logout</a>
+  <% } else { %>
+    <a class="nav-link" href="/auth/login">Login</a>
+  <% } %>
+  
+  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">About</a>
+</nav>

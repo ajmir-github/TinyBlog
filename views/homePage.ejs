@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- HEAD -->
+  <%- include("partials/head") %>
+
+<body>
+
+  <!-- navbar and nav tabs -->
+  <%- include("partials/navbar") %>
+
+
+
+  <!-- Posts -->
+  <div class="container">
+    <div class="row">
+
+      <% posts.forEach(post =>{ %>
+        <div class="mt-4 p-2 rounded">
+          
+          <h1><%= post.title %></h1>
+          <i><strong class="text-primary"><%= post.auther.fullName %></strong></i>
+          <i class="text-secondary"><%= post.auther.title %></i>
+          <p class="lead"><%= post.content %></p>
+    
+          <% if(loggedIn && user._id.toString() === post.auther._id.toString()){ %>
+            <a class="btn btn-primary" href="/profile/post/edit/<%= post._id %>">Edit</a>
+            <a class="btn btn-danger" href="/profile/post/delete/<%= post._id %>">Delete</a>
+          <% } %>
+    
+        </div>
+      <% }) %>
+
+    </div>
+  </div>
+  <!-- End of Posts -->
+
+  
+  <!-- pagination -->
+  <ul class="pagination justify-content-center" style="margin:20px 0">
+    <li class="page-item <%= pagination.skip === 0 ?'disabled':''%>"><a class="page-link" href="/?skip=<%= pagination.skip-pagination.limit %>">Previous</a></li>    
+    <li class="page-item"><a class="page-link" href="/?skip=<%= pagination.skip+pagination.limit %>">Next</a></li>
+  </ul>
+
+
+  <!-- Footer -->
+  <%- include("partials/footer") %>
+  
+</body>
+</html>

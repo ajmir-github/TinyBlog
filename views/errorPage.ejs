@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- HEAD -->
+  <%- include("partials/head") %>
+
+
+<body>
+
+  <!-- navbar and nav tabs -->
+  <%- include("partials/navbar", { loggedIn: false }) %>
+
+
+  
+  <div class="container mt-5">
+    <div class="row">
+      <div class="alert alert-success">
+        <strong><%= error.status %></strong> <%= error.message %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <%- include("partials/footer") %>
+</body>
+</html>

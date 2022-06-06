@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- HEAD -->
+  <%- include("partials/head") %>
+
+</head>
+<body>
+
+  <!-- navbar and nav tabs -->
+  <%- include("partials/navbar", { loggedIn:true }) %>
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="alert alert-success">
+        <strong><%= user.fullName %></strong> <%= user.title %>
+      </div>
+    </div>
+
+    <% if(typeof message !== "undefined"){ %>
+      <div class="row">
+        <div class="alert alert-primary">
+          <strong>Success</strong> <%= message %>
+        </div>
+      </div>
+    <% } %>
+
+  </div>
+
+
+
+  <% if(typeof editPost === "undefined"){ %>
+  <div class="container">
+    <div class="row mt-2">
+      <h2>Make a post</h2>
+      <form action="/profile/post" method="post">
+        <div class="mb-3 mt-3">
+          <label for="title" class="form-label">Title:</label>
+          <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+        </div>
+        <div class="mb-3">
+          <label for="content" class="form-label">Content:</label>
+          <textarea class="form-control" name="content" id="content" cols="30" rows="5"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Post</button>
+      </form>
+    </div>
+  </div>
+
+  <% } else { %>
+
+  <div class="container">
+    <div class="row mt-2">
+      <h2>Edit the post</h2>
+      <form action="/profile/post/edit/<%= editPost._id %>" method="post">
+        <div class="mb-3 mt-3">
+          <label for="title" class="form-label">Title:</label>
+          <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="<%= editPost.title %>">
+        </div>
+        <div class="mb-3">
+          <label for="content" class="form-label">Content:</label>
+          <textarea class="form-control" name="content" id="content" cols="30" rows="5"><%= editPost.content %></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Edit</button>
+      </form>
+    </div>
+  </div>
+
+  <% } %>
+
+
+  <!-- Footer -->
+  <%- include("partials/footer") %>
+
+</body>
+</html>

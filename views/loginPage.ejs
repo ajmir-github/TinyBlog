@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- HEAD -->
+  <%- include("partials/head") %>
+
+<body>
+
+  <!-- navbar and nav tabs -->
+  <%- include("partials/navbar", { loggedIn: false }) %>
+
+
+  <div class="container pt-5">
+    
+    <% if(typeof error !== "undefined"){ %>
+      <div class="row">
+        <div class="alert alert-primary">
+          <strong><%= typeof error.status !== "undefined" ? error.status : "" %></strong> <%= typeof error.message !== "undefined" ? error.message : "" %>
+        </div>
+      </div>
+    <% } %>
+
+
+    <div class="row px-5 justify-content-center">
+
+      <!-- Login -->
+      <div class="col-10 col-md-5">
+        <form action="/auth/login" method="post">
+          <h2>Login</h2>
+          <div class="mb-3 mt-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
+          </div>
+          <div class="mb-3">
+            <label for="pwd" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+          </div>
+          <div class="form-check mb-3">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" name="remember"> Remember me
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+      </div>
+
+      <!-- Sign Up -->
+      <div class="col-10 col-md-5">
+        <form action="/auth/signup" method="post">
+          <h2>Sign Up</h2>
+          <div class="mb-3 mt-3">
+            <label for="fullName" class="form-label">Full Name:</label>
+            <input type="text" class="form-control" id="fullName" placeholder="Enter full name" name="fullName">
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+          </div>
+          <div class="mb-3 mt-3">
+            <label for="username" class="form-label">Username:</label>
+            <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Sign up</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <%- include("partials/footer") %>
+
+</body>
+</html>
