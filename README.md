@@ -3,6 +3,14 @@ TinyBlog is a simple blog website with user authetication system.
 
 ## Setup
 
+Add .env file to the main directory of this project, and include the following values. Keys are as follows:
+
+```bash
+DATABASE_NAME = 
+PORT = 
+COOKIE_NAME = 
+```
+
 Use NPM to install its depedencies.
 
 ```bash
